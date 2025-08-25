@@ -1,0 +1,15 @@
+ @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&family=Poppins:wght@500&display=swap');
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ * {
+       font-family: "Outfit", sans-serif;
+ }
+
+ @theme {
+       --color-primary: #003dfc;
+       --color-secondary: #fbbf24;
+       --color-heading:#152c5b;
+       --color-paragraph:#b0b0b0;
+ }
