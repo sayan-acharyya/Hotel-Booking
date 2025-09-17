@@ -71,6 +71,8 @@ export const login = async (req, res) => {
     // set cookie
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,         
+      sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000,
       // secure: true, // uncomment when using https
       // sameSite: "strict",
@@ -94,7 +96,10 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     res.clearCookie("token");
-    return res.json({ message: "Logout successaful", success: true });
+    return res.json({ message: "Logout successaful", 
+                     success: true,
+                     secure: true,         
+                    sameSite: "None" });
   } catch (error) {
     return res.json({ message: "internal server error", success: false });
   }
