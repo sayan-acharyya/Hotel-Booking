@@ -95,13 +95,16 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token");
-    return res.json({ message: "Logout successaful", 
-                     success: true,
-                     secure: true,         
-                    sameSite: "None" });
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,        // Must be HTTPS in production
+      sameSite: "None",    // Needed for cross-origin cookies
+    });
+
+    return res.json({ message: "Logout successful", success: true });
   } catch (error) {
-    return res.json({ message: "internal server error", success: false });
+    logger.error("Logout error:", error);
+    return res.status(500).json({ message: "Something went wrong", success: false });
   }
 };
 
